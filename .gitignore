@@ -1,6 +1,32 @@
-
-# deps
+# Dependencies
 node_modules/
 
-# mac
+# Build output
+dist/
+dist-ssr/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# OS files
 .DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# IDE
+.vscode/
+!.vscode/extensions.json
+.idea/
+
+# Misc
+*.local

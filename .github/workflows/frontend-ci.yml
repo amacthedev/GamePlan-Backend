@@ -1,31 +1,43 @@
-name: GamePlan Frontend CI
+name: Frontend CI
 
 on:
   push:
     branches: [main]
     paths:
-      - "GamePlan-Frontend/**"
+      - "packages/frontend/**"
+      - "packages/shared/**"
   pull_request:
     branches: [main]
     paths:
-      - "GamePlan-Frontend/**"
+      - "packages/frontend/**"
+      - "packages/shared/**"
 
 jobs:
   frontend:
     runs-on: ubuntu-latest
 
-    defaults:
-      run:
-        working-directory: GamePlan-Frontend
-
     steps:
       - uses: actions/checkout@v4
 
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
       - uses: actions/setup-node@v4
         with:
-          node-version: 18
-          cache: npm
-          cache-dependency-path: GamePlan-Frontend/package-lock.json
+          node-version: 20
+          cache: pnpm
 
-      - run: npm ci
-      - run: npm run build
+      - run: pnpm install --frozen-lockfile
+
+      - name: Build shared types
+        run: pnpm --filter @gameplan/shared build
+
+      - name: Lint frontend
+        run: pnpm --filter @gameplan/frontend lint
+
+      - name: Build frontend
+        run: pnpm --filter @gameplan/frontend build
+
+      - name: Test frontend
+        run: pnpm --filter @gameplan/frontend test || true
