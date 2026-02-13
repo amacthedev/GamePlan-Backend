@@ -1,17 +1,15 @@
 {
-  "name": "gameplan-backend",
+  "name": "@gameplan/backend",
   "version": "1.0.0",
   "private": true,
   "main": "dist/server.js",
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
     "build": "tsc",
-    "start": "node dist/server.js"
+    "start": "node dist/server.js",
+    "lint": "echo \"No linter configured yet\"",
+    "test": "echo \"No tests configured yet\""
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "description": "",
   "dependencies": {
     "dotenv": "^17.2.3",
     "express": "^5.2.1"

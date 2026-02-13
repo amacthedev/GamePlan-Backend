@@ -1,0 +1,19 @@
+{
+  "name": "gameplan",
+  "private": true,
+  "scripts": {
+    "dev": "pnpm --parallel -r run dev",
+    "dev:backend": "pnpm --filter @gameplan/backend dev",
+    "dev:frontend": "pnpm --filter @gameplan/frontend dev",
+    "build": "pnpm -r run build",
+    "lint": "pnpm -r run lint",
+    "test": "pnpm -r run test",
+    "db:migrate": "pnpm --filter @gameplan/backend prisma migrate dev",
+    "db:seed": "pnpm --filter @gameplan/backend prisma db seed",
+    "db:studio": "pnpm --filter @gameplan/backend prisma studio"
+  },
+  "engines": {
+    "node": ">=20",
+    "pnpm": ">=9"
+  }
+}
